@@ -1,0 +1,403 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif; /* Đổi sang font Inter cực sang */
+  background-color: #f9f9f9; /* Màu nền hơi xám nhẹ để làm nổi bật các card bài viết màu trắng */
+  color: #212121; /* Thay vì dùng màu đen tuyền #000, dùng xám rất đậm sẽ dịu mắt hơn */
+  padding: 40px 20px;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: 600; /* Chữ đậm vừa phải, hiện đại */
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: #111111;
+}
+
+.post-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5f5f5f; /* Màu chữ nội dung nhạt hơn tiêu đề để phân cấp thị giác */
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #eee;
+  }
+  50% {
+    background-color: #f5f5f5;
+  }
+  100% {
+    background-color: #eee;
+  }
+}
+.skeleton-card {
+  height: 120px;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite ease-in-out;
+  margin-bottom: 15px;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* Style cho nút bấm Tắt đèn */
+.theme-toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* =======================================================
+   1. CHẾ ĐỘ BAN NGÀY (BẬT ĐÈN) - Sửa lỗi hiện rõ hạt sáng
+   ======================================================= */
+body {
+  font-family: "Inter", sans-serif;
+  color: #212121;
+  padding: 40px 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  transition: background 0.6s ease, color 0.6s ease;
+  background-color: #7dd3fc;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 12px), radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 8px), radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, transparent 10px); /* Hạt 3 vừa */
+  background-position: 15% 20%, 65% 50%, 45% 80%;
+  background-repeat: no-repeat;
+  background-size: 300% 300%;
+  animation: morningMagic 12s ease-in-out infinite alternate;
+}
+
+/* Định nghĩa chuyển động lắc lư cho các hạt sáng ban ngày */
+@keyframes morningMagic {
+  0% {
+    background-position: 15% 20%, 65% 50%, 45% 80%;
+  }
+  50% {
+    background-position: 45% 80%, 15% 20%, 85% 30%;
+  }
+  100% {
+    background-position: 85% 40%, 45% 10%, 15% 90%;
+  }
+}
+/* =======================================================
+   2. CHẾ ĐỘ BAN ĐÊM (TẮT ĐÈN) - Hiệu ứng Bầu trời sao rơi & Mặt trăng
+   ======================================================= */
+body.dark-theme {
+  color: #f5f5f5;
+  background-color: #0b0f19;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Cpath d='M60,20 A30,30 0 1,0 90,50 A24,24 0 1,1 60,20 Z' fill='%23fef08a' opacity='0.15'/%3E%3C/svg%3E"), radial-gradient(circle at 50% 50%, #ffffff 0.5px, transparent 1.5px), radial-gradient(circle at 20% 80%, #ffffff 1px, transparent 2px), linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 10%); /* Vệt sao rơi mờ */
+  background-position: right 10% top 5%, 0 0, 40px 60px, 0 0;
+  background-size: auto, 80px 80px, 120px 120px, 300% 300%;
+  background-repeat: no-repeat, repeat, repeat, no-repeat;
+  animation: nightSky 25s linear infinite;
+  /* Ép chữ h1 chuyển sang màu trắng */
+}
+body.dark-theme h1 {
+  color: #ffffff !important;
+}
+body.dark-theme {
+  /* Giữ nguyên phần đổi màu ô tìm kiếm, card bài viết và modal cũ */
+}
+body.dark-theme .search-box input {
+  background-color: #1f2937;
+  color: #fff;
+}
+body.dark-theme .search-box input::-moz-placeholder {
+  color: #9ca3af;
+}
+body.dark-theme .search-box input::placeholder {
+  color: #9ca3af;
+}
+body.dark-theme .search-box input:focus {
+  background-color: #111827;
+}
+body.dark-theme .post-item {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+body.dark-theme .post-item .post-title {
+  color: #ffffff;
+}
+body.dark-theme .post-item .post-body {
+  color: #9ca3af;
+}
+body.dark-theme .theme-toggle-btn {
+  background-color: #1f2937;
+  color: #fff;
+  border-color: #374151;
+}
+body.dark-theme .modal-content {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  color: #fff;
+}
+body.dark-theme .modal-content #modal-title {
+  color: #fff;
+}
+body.dark-theme .modal-content #modal-body {
+  color: #9ca3af;
+}
+
+/* Hiệu ứng chuyển dịch mượt làm các mốc sao rơi trượt xiên góc màn hình */
+@keyframes nightSky {
+  0% {
+    background-position: right 10% top 5%, 0 0, 40px 60px, 0% 0%;
+  }
+  100% {
+    background-position: right 10% top 5%, 80px 80px, 160px 200px, 100% 100%;
+  }
+}
+/* --- Cấu hình bài viết gốc --- */
+.post-item {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+
+/* --- Thiết kế Ô tròn đánh dấu --- */
+.read-toggle-btn {
+  width: 28px;
+  height: 28px;
+  min-width: 28px; /* Không cho nút bị bóp méo */
+  border-radius: 50%; /* Biến thành ô tròn */
+  border: 2px solid #cbd5e1; /* Viền xám mặc định */
+  background: transparent;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+.read-toggle-btn:hover {
+  border-color: #94a3b8;
+  background-color: rgba(148, 163, 184, 0.1);
+}
+
+/* === KHI ĐƯỢC ĐÁNH DẤU LÀ ĐÃ ĐỌC (BAN NGÀY) === */
+.post-item.is-read {
+  background-color: #f8fafc;
+  border-left: 4px solid #94a3b8;
+}
+.post-item.is-read .post-title {
+  color: #334155;
+}
+.post-item.is-read .read-toggle-btn {
+  background-color: #94a3b8; /* Tô kín ô tròn bằng màu xám */
+  border-color: #94a3b8;
+  color: #ffffff; /* Dấu tích màu trắng */
+}
+
+/* === KHI ĐƯỢC ĐÁNH DẤU LÀ ĐÃ ĐỌC (BAN ĐÊM) === */
+body.dark-theme .post-item {
+  background: #111827;
+  border: 1px solid #1f2937;
+}
+body.dark-theme .read-toggle-btn {
+  border-color: #4b5563;
+}
+body.dark-theme .read-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+body.dark-theme .post-item.is-read {
+  background-color: #1e293b;
+  border-left: 4px solid #475569;
+}
+body.dark-theme .post-item.is-read .post-title {
+  color: #cbd5e1;
+}
+body.dark-theme .post-item.is-read .read-toggle-btn {
+  background-color: #475569;
+  border-color: #475569;
+  color: #ffffff;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  color: #111;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.post-item {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.post-title {
+  margin-top: 0;
+  color: #333;
+  text-transform: capitalize;
+}
+
+.post-body {
+  color: #666;
+  line-height: 1.5;
+}
+
+.no-result {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+}
+
+.post-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Tạo chuyển động mượt */
+  position: relative; /* Định vị khối */
+  z-index: 10; /* Ép bài viết nổi lên trên tất cả các lớp nền động */
+  cursor: pointer;
+}
+
+.post-content {
+  flex: 1; /* Chiếm toàn bộ độ rộng còn lại */
+  pointer-events: auto; /* Chắc chắn nhận sự kiện click */
+}
+
+.post-item:hover {
+  transform: translateY(-4px); /* Nhấc bài viết lên một chút */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng đậm hơn */
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 16px;
+  background-color: #ededed; /* Nền xám nhạt tinh tế */
+  border: 2px solid transparent; /* Ẩn viền mặc định */
+  border-radius: 100px; /* Bo tròn xoe hai đầu giống thanh tìm kiếm Pinterest */
+  outline: none;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.search-box input::-moz-placeholder {
+  color: #767676; /* Màu chữ gợi ý chuẩn gu UI hiện đại */
+}
+.search-box input::placeholder {
+  color: #767676; /* Màu chữ gợi ý chuẩn gu UI hiện đại */
+}
+.search-box input {
+  /* Khi người dùng click vào ô để gõ */
+}
+.search-box input:focus {
+  background-color: #ffffff; /* Đổi sang nền trắng */
+  border-color: #a7a7a7; /* Hiện viền xám nhẹ định vị */
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05); /* Hiệu ứng tỏa hào quang nhẹ */
+}
+
+/* Nền tối bao phủ toàn màn hình */
+.modal {
+  display: none; /* Mặc định ẩn đi */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Màu đen mờ */
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px); /* Làm mờ nền phía sau giống hiệu ứng hiện đại */
+}
+
+/* Khi thêm class .show thì hiển thị modal dạng flex */
+.modal.show {
+  display: flex;
+}
+
+/* Hộp nội dung chi tiết bài viết */
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 16px; /* Bo góc tròn nhiều giống Pinterest */
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out; /* Hiệu ứng hiện hình mượt mà */
+}
+
+/* Nút Đóng (X) */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.modal-meta {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+#modal-title {
+  text-transform: capitalize;
+  margin-top: 0;
+  color: #111;
+}
+
+#modal-body {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}/*# sourceMappingURL=index.css.map */
