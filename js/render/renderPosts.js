@@ -28,12 +28,25 @@ export function renderPosts(posts) {
     `;
 
     // --- SỬA LỖI MODAL: Lắng nghe click vào vùng nội dung chữ ---
+    // --- SỬA LẠI ĐOẠN CLICK VÙNG CHỮ ĐỂ BẬT MODAL ---
     const postContent = postItem.querySelector('.post-content');
     postContent.addEventListener('click', () => {
-      // Gọi lại logic mở Modal cũ của bạn ở đây. Ví dụ:
-      // openModal(post); 
+      console.log("Mở modal cho bài viết số:", post.id);
+
+      // 1. Tìm cái hộp modal ngoài giao diện HTML
+      const modal = document.getElementById('post-modal'); // Bạn kiểm tra xem id của thẻ modal trong file index.html là gì nhé (thường là 'post-modal' hoặc 'modal')
       
-      console.log("Mở modal cho bài viết số:", post.id); // Dòng này để test thử xem nhận click chưa
+      if (modal) {
+        // 2. Đổ dữ liệu của bài viết vào các thẻ bên trong modal
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        
+        if (modalTitle) modalTitle.innerText = post.title;
+        if (modalBody) modalBody.innerText = post.body;
+
+        // 3. Thêm class 'show' để CSS ép modal hiện lên dạng flex
+        modal.classList.add('show');
+      }
     });
 
     // --- GIỮ NGUYÊN: Lắng nghe click vào riêng nút ô tròn ---
@@ -56,4 +69,21 @@ export function renderPosts(posts) {
 
     postListContainer.appendChild(postItem);
   });
+  // Đoạn này đặt ở cuối file js/render/renderPosts.js hoặc file main.js của bạn nhé:
+  const modal = document.getElementById('post-modal'); // Nhớ sửa đúng ID thẻ modal của bạn
+  const closeBtn = document.querySelector('.close-btn');
+
+  if (modal && closeBtn) {
+    // Click vào nút X thì xóa class 'show' để ẩn đi
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+
+    // Click ra vùng nền tối mờ xung quanh cũng ẩn modal đi luôn
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+      }
+    });
+  }
 }

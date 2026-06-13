@@ -1,9 +1,12 @@
 // File: js/modules/readStatus.js
 
+// Hàm này dùng nội bộ nên không cần export
 function getReadPostIds() {
   const readPosts = localStorage.getItem('read_posts');
   return readPosts ? JSON.parse(readPosts) : [];
 }
+
+// THÊM TỪ KHÓA EXPORT VÀO TRƯỚC TẤT CẢ CÁC HÀM DƯỚI ĐÂY:
 
 export function checkIsRead(postId) {
   const readIds = getReadPostIds();
@@ -18,7 +21,6 @@ export function markAsRead(postId) {
   }
 }
 
-// === THÊM HÀM NÀY: Xóa bài viết khỏi danh sách đã đọc ===
 export function markAsUnread(postId) {
   let readIds = getReadPostIds();
   // Lọc bỏ ID này ra khỏi mảng
