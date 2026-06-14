@@ -7,15 +7,15 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif; /* Đổi sang font Inter cực sang */
-  background-color: #f9f9f9; /* Màu nền hơi xám nhẹ để làm nổi bật các card bài viết màu trắng */
-  color: #212121; /* Thay vì dùng màu đen tuyền #000, dùng xám rất đậm sẽ dịu mắt hơn */
+  font-family: 'Inter', sans-serif; 
+  background-color: #f9f9f9;
+  color: #212121; 
   padding: 40px 20px;
 }
 
 .post-title {
   font-size: 18px;
-  font-weight: 600; /* Chữ đậm vừa phải, hiện đại */
+  font-weight: 600; 
   line-height: 1.4;
   margin-bottom: 10px;
   color: #111111;
@@ -24,7 +24,7 @@ body {
 .post-body {
   font-size: 14px;
   line-height: 1.6;
-  color: #5f5f5f; /* Màu chữ nội dung nhạt hơn tiêu đề để phân cấp thị giác */
+  color: #5f5f5f; 
 }
 .container {
   max-width: 800px;
@@ -51,7 +51,6 @@ body {
     opacity: 1;
   }
 }
-/* Style cho nút bấm Tắt đèn */
 .theme-toggle-btn {
   position: absolute;
   top: 20px;
@@ -65,9 +64,7 @@ body {
   transition: all 0.3s ease;
 }
 
-/* =======================================================
-   1. CHẾ ĐỘ BAN NGÀY (BẬT ĐÈN) - Sửa lỗi hiện rõ hạt sáng
-   ======================================================= */
+
 body {
   font-family: 'Inter', sans-serif;
   color: #212121;
@@ -75,72 +72,52 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   transition: background 0.6s ease, color 0.6s ease;
-
-  // Cố định màu nền xanh da trời ở dưới cùng (Không bị animation làm lệch)
   background-color: #7dd3fc; 
   
-  // Vẽ các hạt bong bóng trắng rõ nét hơn bằng cách tăng kích thước hạt lên một chút
-  background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 12px), /* Hạt 1 to, rõ */
-    radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 8px),  /* Hạt 2 vừa */
-    radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, transparent 10px); /* Hạt 3 vừa */
   
-  // Đặt các hạt ở các vị trí ban đầu khác nhau khắp màn hình
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.9) 0%, transparent 15%),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.6) 0%, transparent 10%),
+    radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.7) 0%, transparent 12%),
+    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.8) 0%, transparent 8%),
+    radial-gradient(circle at 20% 90%, rgba(255, 255, 255, 0.5) 0%, transparent 20%);
+  
+  
   background-position: 15% 20%, 65% 50%, 45% 80%;
   
-  // Không cho các hạt tự lặp lại thành một hàng ngang/dọc
+  
   background-repeat: no-repeat;
   
-  // Phóng to không gian chứa hạt lên 300% để biên độ di chuyển cực rộng
+  
   background-size: 300% 300%;
   
-  // Chạy animation lắc lư làm các hạt chuyển động lướt qua màn hình
-  animation: morningMagic 12s ease-in-out infinite alternate;
+  animation: morningMagic 30s ease-in-out infinite alternate;
+  background-size: 150% 150%;
 }
 
-/* Định nghĩa chuyển động lắc lư cho các hạt sáng ban ngày */
-@keyframes morningMagic {
-  0% {
-    background-position: 15% 20%, 65% 50%, 45% 80%;
-  }
-  50% {
-    background-position: 45% 80%, 15% 20%, 85% 30%;
-  }
-  100% {
-    background-position: 85% 40%, 45% 10%, 15% 90%;
-  }
-}
 
-/* =======================================================
-   2. CHẾ ĐỘ BAN ĐÊM (TẮT ĐÈN) - Hiệu ứng Bầu trời sao rơi & Mặt trăng
-   ======================================================= */
+
 body.dark-theme {
   color: #f5f5f5;      
-
-  // Nền bầu trời đêm xanh đen huyền bí
   background-color: #0b0f19;
   
-  // Vẽ Mặt Trăng lưỡi liềm bằng SVG mờ góc trên + Lưới sao nhỏ lấp lánh trải đều
   background-image: 
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Cpath d='M60,20 A30,30 0 1,0 90,50 A24,24 0 1,1 60,20 Z' fill='%23fef08a' opacity='0.15'/%3E%3C/svg%3E"), /* Mặt trăng ẩn ngầm */
-    radial-gradient(circle at 50% 50%, #ffffff 0.5px, transparent 1.5px), /* Lớp sao 1 */
-    radial-gradient(circle at 20% 80%, #ffffff 1px, transparent 2px),   /* Lớp sao 2 */
-    linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 10%); /* Vệt sao rơi mờ */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Cpath d='M60,20 A30,30 0 1,0 90,50 A24,24 0 1,1 60,20 Z' fill='%23fef08a' opacity='0.15'/%3E%3C/svg%3E"), 
+    radial-gradient(circle at 50% 50%, #ffffff 0.5px, transparent 1.5px), 
+    radial-gradient(circle at 20% 80%, #ffffff 1px, transparent 2px),  
+    linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 10%); 
   
-  // Cài đặt vị trí mặt trăng cố định ở góc phải, các ngôi sao phủ đều
+  
   background-position: right 10% top 5%, 0 0, 40px 60px, 0 0;
   background-size: auto, 80px 80px, 120px 120px, 300% 300%;
   background-repeat: no-repeat, repeat, repeat, no-repeat;
-  
-  // Kích hoạt hiệu ứng bầu trời đêm chuyển động (sao rơi trượt xiên và lấp lánh)
   animation: nightSky 25s linear infinite;
 
-  /* Ép chữ h1 chuyển sang màu trắng */
   h1 {
     color: #ffffff !important;
   }
 
-  /* Giữ nguyên phần đổi màu ô tìm kiếm, card bài viết và modal cũ */
+  
   .search-box input {
     background-color: #1f2937;
     color: #fff;
@@ -172,7 +149,9 @@ body.dark-theme {
   }
 }
 
-/* Hiệu ứng chuyển dịch mượt làm các mốc sao rơi trượt xiên góc màn hình */
+.theme-toggle-btn i {
+    color: #fbbf24; 
+}
 @keyframes nightSky {
   0% {
     background-position: right 10% top 5%, 0 0, 40px 60px, 0% 0%;
@@ -182,7 +161,6 @@ body.dark-theme {
   }
 }
 
-/* --- Cấu hình bài viết gốc --- */
 .post-item {
   background: #ffffff;
   padding: 24px;
@@ -190,7 +168,7 @@ body.dark-theme {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   margin-bottom: 16px;
   
-  // Dùng flex để xếp nội dung bài viết và nút đánh dấu nằm ngang hàng nhau
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -198,13 +176,12 @@ body.dark-theme {
   transition: all 0.3s ease;
 }
 
-/* --- Thiết kế Ô tròn đánh dấu --- */
 .read-toggle-btn {
   width: 28px;
   height: 28px;
-  min-width: 28px; /* Không cho nút bị bóp méo */
-  border-radius: 50%; /* Biến thành ô tròn */
-  border: 2px solid #cbd5e1; /* Viền xám mặc định */
+  min-width: 28px; 
+  border-radius: 50%; 
+  border: 2px solid #cbd5e1; 
   background: transparent;
   color: #94a3b8;
   font-size: 14px;
@@ -221,22 +198,20 @@ body.dark-theme {
   }
 }
 
-/* === KHI ĐƯỢC ĐÁNH DẤU LÀ ĐÃ ĐỌC (BAN NGÀY) === */
+
 .post-item.is-read {
   background-color: #f8fafc; 
   border-left: 4px solid #94a3b8; 
   
   .post-title { color: #334155; }
 
-  // Ô tròn biến đổi khi đã tích chọn
   .read-toggle-btn {
-    background-color: #94a3b8; /* Tô kín ô tròn bằng màu xám */
+    background-color: #94a3b8;
     border-color: #94a3b8;
-    color: #ffffff; /* Dấu tích màu trắng */
+    color: #ffffff;
   }
 }
 
-/* === KHI ĐƯỢC ĐÁNH DẤU LÀ ĐÃ ĐỌC (BAN ĐÊM) === */
 body.dark-theme {
   .post-item {
     background: #111827;
@@ -261,3 +236,4 @@ body.dark-theme {
     }
   }
 }
+

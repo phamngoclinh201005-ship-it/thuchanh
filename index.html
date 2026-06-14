@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh Sách Bài Viết</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/index.css">
 </head>
@@ -12,20 +13,17 @@
 <body>
 
     <div class="container">
-        <button id="theme-toggle" class="theme-toggle-btn">🌙 Tắt đèn</button>
+        <button id="theme-toggle" class="theme-toggle-btn"> Tắt đèn</button>
         <h1>Danh Sách Bài Viết</h1>
-
         <div class="search-box">
             <input type="text" id="search-input" placeholder="Nhập tiêu đề bài viết cần tìm...">
+            <i class="fa-solid fa-magnifying-glass" id="search-button" ></i>
         </div>
-
+        <div class="no-result" style="display: none;">Không tìm thấy bài viết nào phù hợp!</div>
         <main id="post-list" class="post-list">
             <p>Đang tải bài viết...</p>
         </main>
     </div>
-    <!-- Giữ nguyên phần danh sách bài viết ở trên ... -->
-
-    <!-- Thêm khung cấu trúc Modal vào đây -->
     <div id="post-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -34,8 +32,6 @@
             <p id="modal-body">Nội dung chi tiết bài viết...</p>
         </div>
     </div>
-
-    <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/main.js"></script>
 </body>
 

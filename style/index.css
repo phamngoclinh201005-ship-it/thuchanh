@@ -1,4 +1,3 @@
-@charset "UTF-8";
 *,
 *::before,
 *::after {
@@ -8,15 +7,15 @@
 }
 
 body {
-  font-family: "Inter", sans-serif; /* Đổi sang font Inter cực sang */
-  background-color: #f9f9f9; /* Màu nền hơi xám nhẹ để làm nổi bật các card bài viết màu trắng */
-  color: #212121; /* Thay vì dùng màu đen tuyền #000, dùng xám rất đậm sẽ dịu mắt hơn */
+  font-family: "Inter", sans-serif;
+  background-color: #f9f9f9;
+  color: #212121;
   padding: 40px 20px;
 }
 
 .post-title {
   font-size: 18px;
-  font-weight: 600; /* Chữ đậm vừa phải, hiện đại */
+  font-weight: 600;
   line-height: 1.4;
   margin-bottom: 10px;
   color: #111111;
@@ -25,7 +24,7 @@ body {
 .post-body {
   font-size: 14px;
   line-height: 1.6;
-  color: #5f5f5f; /* Màu chữ nội dung nhạt hơn tiêu đề để phân cấp thị giác */
+  color: #5f5f5f;
 }
 
 .container {
@@ -61,7 +60,6 @@ body {
     opacity: 1;
   }
 }
-/* Style cho nút bấm Tắt đèn */
 .theme-toggle-btn {
   position: absolute;
   top: 20px;
@@ -75,9 +73,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* =======================================================
-   1. CHẾ ĐỘ BAN NGÀY (BẬT ĐÈN) - Sửa lỗi hiện rõ hạt sáng
-   ======================================================= */
 body {
   font-family: "Inter", sans-serif;
   color: #212121;
@@ -86,43 +81,25 @@ body {
   box-sizing: border-box;
   transition: background 0.6s ease, color 0.6s ease;
   background-color: #7dd3fc;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 12px), radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 8px), radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, transparent 10px); /* Hạt 3 vừa */
+  background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.9) 0%, transparent 15%), radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.6) 0%, transparent 10%), radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.7) 0%, transparent 12%), radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.8) 0%, transparent 8%), radial-gradient(circle at 20% 90%, rgba(255, 255, 255, 0.5) 0%, transparent 20%);
   background-position: 15% 20%, 65% 50%, 45% 80%;
   background-repeat: no-repeat;
   background-size: 300% 300%;
-  animation: morningMagic 12s ease-in-out infinite alternate;
+  animation: morningMagic 30s ease-in-out infinite alternate;
+  background-size: 150% 150%;
 }
 
-/* Định nghĩa chuyển động lắc lư cho các hạt sáng ban ngày */
-@keyframes morningMagic {
-  0% {
-    background-position: 15% 20%, 65% 50%, 45% 80%;
-  }
-  50% {
-    background-position: 45% 80%, 15% 20%, 85% 30%;
-  }
-  100% {
-    background-position: 85% 40%, 45% 10%, 15% 90%;
-  }
-}
-/* =======================================================
-   2. CHẾ ĐỘ BAN ĐÊM (TẮT ĐÈN) - Hiệu ứng Bầu trời sao rơi & Mặt trăng
-   ======================================================= */
 body.dark-theme {
   color: #f5f5f5;
   background-color: #0b0f19;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Cpath d='M60,20 A30,30 0 1,0 90,50 A24,24 0 1,1 60,20 Z' fill='%23fef08a' opacity='0.15'/%3E%3C/svg%3E"), radial-gradient(circle at 50% 50%, #ffffff 0.5px, transparent 1.5px), radial-gradient(circle at 20% 80%, #ffffff 1px, transparent 2px), linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 10%); /* Vệt sao rơi mờ */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Cpath d='M60,20 A30,30 0 1,0 90,50 A24,24 0 1,1 60,20 Z' fill='%23fef08a' opacity='0.15'/%3E%3C/svg%3E"), radial-gradient(circle at 50% 50%, #ffffff 0.5px, transparent 1.5px), radial-gradient(circle at 20% 80%, #ffffff 1px, transparent 2px), linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 10%);
   background-position: right 10% top 5%, 0 0, 40px 60px, 0 0;
   background-size: auto, 80px 80px, 120px 120px, 300% 300%;
   background-repeat: no-repeat, repeat, repeat, no-repeat;
   animation: nightSky 25s linear infinite;
-  /* Ép chữ h1 chuyển sang màu trắng */
 }
 body.dark-theme h1 {
   color: #ffffff !important;
-}
-body.dark-theme {
-  /* Giữ nguyên phần đổi màu ô tìm kiếm, card bài viết và modal cũ */
 }
 body.dark-theme .search-box input {
   background-color: #1f2937;
@@ -165,7 +142,10 @@ body.dark-theme .modal-content #modal-body {
   color: #9ca3af;
 }
 
-/* Hiệu ứng chuyển dịch mượt làm các mốc sao rơi trượt xiên góc màn hình */
+.theme-toggle-btn i {
+  color: #fbbf24;
+}
+
 @keyframes nightSky {
   0% {
     background-position: right 10% top 5%, 0 0, 40px 60px, 0% 0%;
@@ -174,7 +154,6 @@ body.dark-theme .modal-content #modal-body {
     background-position: right 10% top 5%, 80px 80px, 160px 200px, 100% 100%;
   }
 }
-/* --- Cấu hình bài viết gốc --- */
 .post-item {
   background: #ffffff;
   padding: 24px;
@@ -188,13 +167,12 @@ body.dark-theme .modal-content #modal-body {
   transition: all 0.3s ease;
 }
 
-/* --- Thiết kế Ô tròn đánh dấu --- */
 .read-toggle-btn {
   width: 28px;
   height: 28px;
-  min-width: 28px; /* Không cho nút bị bóp méo */
-  border-radius: 50%; /* Biến thành ô tròn */
-  border: 2px solid #cbd5e1; /* Viền xám mặc định */
+  min-width: 28px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
   background: transparent;
   color: #94a3b8;
   font-size: 14px;
@@ -210,7 +188,6 @@ body.dark-theme .modal-content #modal-body {
   background-color: rgba(148, 163, 184, 0.1);
 }
 
-/* === KHI ĐƯỢC ĐÁNH DẤU LÀ ĐÃ ĐỌC (BAN NGÀY) === */
 .post-item.is-read {
   background-color: #f8fafc;
   border-left: 4px solid #94a3b8;
@@ -219,12 +196,11 @@ body.dark-theme .modal-content #modal-body {
   color: #334155;
 }
 .post-item.is-read .read-toggle-btn {
-  background-color: #94a3b8; /* Tô kín ô tròn bằng màu xám */
+  background-color: #94a3b8;
   border-color: #94a3b8;
-  color: #ffffff; /* Dấu tích màu trắng */
+  color: #ffffff;
 }
 
-/* === KHI ĐƯỢC ĐÁNH DẤU LÀ ĐÃ ĐỌC (BAN ĐÊM) === */
 body.dark-theme .post-item {
   background: #111827;
   border: 1px solid #1f2937;
@@ -255,33 +231,66 @@ h1 {
   color: #111;
 }
 
+.search-box {
+  position: relative;
+  margin-bottom: 20px;
+}
 .search-box input {
   width: 100%;
-  padding: 12px;
+  padding: 14px 20px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
+  background-color: #ededed;
+  border: 2px solid transparent;
+  border-radius: 100px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.search-box input::-moz-placeholder {
+  color: #767676;
+}
+.search-box input::placeholder {
+  color: #767676;
+}
+.search-box input:focus {
+  background-color: #ffffff;
+  border-color: #a7a7a7;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
 }
 
 .post-item {
   background: #fff;
-  padding: 15px;
+  padding: 20px;
   margin-bottom: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
 }
-
-.post-title {
+.post-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.post-item .post-title {
   margin-top: 0;
   color: #333;
   text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 600;
 }
-
-.post-body {
+.post-item .post-body {
   color: #666;
   line-height: 1.5;
+  font-size: 14px;
+}
+
+.post-content {
+  flex: 1;
+  pointer-events: auto;
 }
 
 .no-result {
@@ -290,86 +299,56 @@ h1 {
   font-style: italic;
 }
 
-.post-item {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Tạo chuyển động mượt */
-  position: relative; /* Định vị khối */
-  z-index: 10; /* Ép bài viết nổi lên trên tất cả các lớp nền động */
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search-box #search-button {
+  position: absolute;
+  right: 20px;
+  color: #767676;
   cursor: pointer;
+  font-size: 18px;
+  pointer-events: none;
+  transition: color 0.2s ease;
 }
-
-.post-content {
-  flex: 1; /* Chiếm toàn bộ độ rộng còn lại */
-  pointer-events: auto; /* Chắc chắn nhận sự kiện click */
-}
-
-.post-item:hover {
-  transform: translateY(-4px); /* Nhấc bài viết lên một chút */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng đậm hơn */
-}
-
-.search-box input {
-  width: 100%;
-  padding: 14px 20px;
-  font-size: 16px;
-  background-color: #ededed; /* Nền xám nhạt tinh tế */
-  border: 2px solid transparent; /* Ẩn viền mặc định */
-  border-radius: 100px; /* Bo tròn xoe hai đầu giống thanh tìm kiếm Pinterest */
-  outline: none;
-  box-sizing: border-box;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-.search-box input::-moz-placeholder {
-  color: #767676; /* Màu chữ gợi ý chuẩn gu UI hiện đại */
-}
-.search-box input::placeholder {
-  color: #767676; /* Màu chữ gợi ý chuẩn gu UI hiện đại */
+.search-box #search-button:hover {
+  color: #333;
 }
 .search-box input {
-  /* Khi người dùng click vào ô để gõ */
-}
-.search-box input:focus {
-  background-color: #ffffff; /* Đổi sang nền trắng */
-  border-color: #a7a7a7; /* Hiện viền xám nhẹ định vị */
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05); /* Hiệu ứng tỏa hào quang nhẹ */
+  padding-right: 45px;
 }
 
-/* Nền tối bao phủ toàn màn hình */
 .modal {
-  display: none; /* Mặc định ẩn đi */
+  display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Màu đen mờ */
+  background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(5px); /* Làm mờ nền phía sau giống hiệu ứng hiện đại */
+  backdrop-filter: blur(5px);
 }
 
-/* Khi thêm class .show thì hiển thị modal dạng flex */
 .modal.show {
   display: flex;
 }
 
-/* Hộp nội dung chi tiết bài viết */
 .modal-content {
   background-color: #fff;
   padding: 30px;
-  border-radius: 16px; /* Bo góc tròn nhiều giống Pinterest */
+  border-radius: 16px;
   max-width: 600px;
   width: 90%;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease-in-out; /* Hiệu ứng hiện hình mượt mà */
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Nút Đóng (X) */
 .close-btn {
   position: absolute;
   top: 15px;
@@ -378,8 +357,8 @@ h1 {
   font-weight: bold;
   color: #aaa;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
-
 .close-btn:hover {
   color: #333;
 }
@@ -394,10 +373,30 @@ h1 {
   text-transform: capitalize;
   margin-top: 0;
   color: #111;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 #modal-body {
   font-size: 16px;
   color: #333;
   line-height: 1.6;
+}
+
+body.dark-theme .modal-content {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  color: #fff;
+}
+body.dark-theme .modal-content #modal-title {
+  color: #fff;
+}
+body.dark-theme .modal-content #modal-body {
+  color: #9ca3af;
+}
+body.dark-theme .modal-content .close-btn {
+  color: #6b7280;
+}
+body.dark-theme .modal-content .close-btn:hover {
+  color: #fff;
 }/*# sourceMappingURL=index.css.map */

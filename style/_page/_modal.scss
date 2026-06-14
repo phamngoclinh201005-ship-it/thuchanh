@@ -1,36 +1,34 @@
-/* Nền tối bao phủ toàn màn hình */
+@use "../_base/base" as *;
+
 .modal {
-  display: none; /* Mặc định ẩn đi */
+  display: none; 
   position: fixed;
   z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Màu đen mờ */
+  background-color: rgba(0, 0, 0, 0.6); 
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(5px); /* Làm mờ nền phía sau giống hiệu ứng hiện đại */
+  backdrop-filter: blur(5px); 
 }
 
-/* Khi thêm class .show thì hiển thị modal dạng flex */
 .modal.show {
   display: flex;
 }
 
-/* Hộp nội dung chi tiết bài viết */
 .modal-content {
   background-color: #fff;
   padding: 30px;
-  border-radius: 16px; /* Bo góc tròn nhiều giống Pinterest */
+  border-radius: 16px; 
   max-width: 600px;
   width: 90%;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease-in-out; /* Hiệu ứng hiện hình mượt mà */
+  animation: fadeIn 0.3s ease-in-out; 
 }
 
-/* Nút Đóng (X) */
 .close-btn {
   position: absolute;
   top: 15px;
@@ -39,9 +37,11 @@
   font-weight: bold;
   color: #aaa;
   cursor: pointer;
-}
-.close-btn:hover {
-  color: #333;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #333;
+  }
 }
 
 .modal-meta {
@@ -54,6 +54,8 @@
   text-transform: capitalize;
   margin-top: 0;
   color: #111;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 #modal-body {
@@ -62,3 +64,18 @@
   line-height: 1.6;
 }
 
+
+body.dark-theme {
+  .modal-content {
+    background-color: #111827;
+    border: 1px solid #1f2937;
+    color: #fff;
+    
+    #modal-title { color: #fff; }
+    #modal-body { color: #9ca3af; }
+    .close-btn {
+      color: #6b7280;
+      &:hover { color: #fff; }
+    }
+  }
+}

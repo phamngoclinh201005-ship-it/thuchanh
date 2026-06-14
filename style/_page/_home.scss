@@ -1,78 +1,100 @@
 @use "../_base/base" as *;
+
 h1 {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
   color: #111;
 }
-.search-box input {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+
+.search-box {
+  position: relative; 
   margin-bottom: 20px;
-  box-sizing: border-box;
+
+  input {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    background-color: #ededed;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    outline: none;
+    transition: all 0.2s ease;
+
+    &::placeholder { color: #767676; }
+
+    &:focus {
+      background-color: #ffffff;
+      border-color: #a7a7a7;
+      box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+    }
+  }
 }
+
 .post-item {
   background: #fff;
-  padding: 15px;
+  padding: 20px;
   margin-bottom: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .post-title {
+    margin-top: 0;
+    color: #333;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .post-body {
+    color: #666;
+    line-height: 1.5;
+    font-size: 14px;
+  }
 }
-.post-title {
-  margin-top: 0;
-  color: #333;
-  text-transform: capitalize;
+
+.post-content {
+  flex: 1;
+  pointer-events: auto;
 }
-.post-body {
-  color: #666;
-  line-height: 1.5;
-}
+
 .no-result {
   text-align: center;
   color: #999;
   font-style: italic;
 }
-.post-item {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Tạo chuyển động mượt */
-  position: relative; /* Định vị khối */
-  z-index: 10;        /* Ép bài viết nổi lên trên tất cả các lớp nền động */
-  cursor: pointer;
-}
+.search-box {
+  position: relative; 
+  display: flex;
+  align-items: center;
 
-.post-content {
-  flex: 1; /* Chiếm toàn bộ độ rộng còn lại */
-  pointer-events: auto; /* Chắc chắn nhận sự kiện click */
-}
-.post-item:hover {
-  transform: translateY(-4px); /* Nhấc bài viết lên một chút */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Đổ bóng đậm hơn */
-}
-.search-box input {
-  width: 100%;
-  padding: 14px 20px;
-  font-size: 16px;
-  background-color: #ededed; /* Nền xám nhạt tinh tế */
-  border: 2px solid transparent; /* Ẩn viền mặc định */
-  border-radius: 100px; /* Bo tròn xoe hai đầu giống thanh tìm kiếm Pinterest */
-  outline: none;
-  box-sizing: border-box;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  #search-button {
+    position: absolute; 
+    right: 20px;      
+    color: #767676;   
+    cursor: pointer;
+    font-size: 18px;
+    pointer-events: none; 
+    transition: color 0.2s ease;
 
-  &::placeholder {
-    color: #767676; /* Màu chữ gợi ý chuẩn gu UI hiện đại */
+    &:hover {
+      color: #333;
+    }
   }
 
-  /* Khi người dùng click vào ô để gõ */
-  &:focus {
-    background-color: #ffffff; /* Đổi sang nền trắng */
-    border-color: #a7a7a7; /* Hiện viền xám nhẹ định vị */
-    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05); /* Hiệu ứng tỏa hào quang nhẹ */
+  input {
+    padding-right: 45px; 
   }
 }
