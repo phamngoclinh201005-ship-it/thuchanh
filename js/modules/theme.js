@@ -1,5 +1,5 @@
 export function initTheme() {
-  const toggleBtn = document.getElementById('theme-toggle');
+  const toggleBtn = document.querySelector('#theme-toggle');
   if (!toggleBtn) return;
 
   const currentTheme = localStorage.getItem('theme');
