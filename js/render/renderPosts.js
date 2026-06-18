@@ -1,5 +1,4 @@
 import { checkIsRead, markAsRead, markAsUnread } from '../modules/readStatus.js';
-
 function createPostHTML(post, isRead) {
   return `
     <div class="post-content">
@@ -12,7 +11,6 @@ function createPostHTML(post, isRead) {
   `;
 }
 
-
 function attachEvents(postItem, post) {
   const toggleBtn = postItem.querySelector('.read-toggle-btn');
   const postContent = postItem.querySelector('.post-content');
@@ -23,7 +21,6 @@ function attachEvents(postItem, post) {
       postItem.classList.add('is-read');
       toggleBtn.innerText = '✓';
     }
-
     const modal = document.querySelector('#post-modal');
     if (modal) {
       document.querySelector('#modal-title').innerText = post.title;
@@ -32,9 +29,8 @@ function attachEvents(postItem, post) {
     }
   });
 
-  
   toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     const isCurrentlyRead = postItem.classList.contains('is-read');
     if (isCurrentlyRead) {
       markAsUnread(post.id);
@@ -47,37 +43,31 @@ function attachEvents(postItem, post) {
     }
   });
 }
-
-
-export function renderPosts(posts) {
+export function renderPosts(posts, append = false) {
   const postListContainer = document.querySelector('#post-list');
   if (!postListContainer) return;
-  
-  postListContainer.innerHTML = ''; 
+  if (!append) {
+    postListContainer.innerHTML = '';
+  }
 
   posts.forEach(post => {
     const isRead = checkIsRead(post.id);
     const postItem = document.createElement('div');
-    
+
     postItem.className = `post-item ${isRead ? 'is-read' : ''}`;
     postItem.dataset.id = post.id;
     postItem.innerHTML = createPostHTML(post, isRead);
-    
+
     attachEvents(postItem, post);
     postListContainer.appendChild(postItem);
   });
-  setupModalClose(); 
 }
-
-
-function setupModalClose() {
+export function setupModalClose() {
   const modal = document.querySelector('#post-modal');
   const closeBtn = document.querySelector('.close-btn');
-  if (!modal) return;
-
+  if (!modal || !closeBtn) return;
   const closeModal = () => modal.classList.remove('show');
-  
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
